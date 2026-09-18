@@ -1,0 +1,83 @@
+{
+  "manifest_version": 3,
+  "name": "Canva Voice Injector - AI Audio & Voiceover",
+  "version": "1.0.3",
+  "description": "1-Click slide scanning and free neural voice generation to automatically add voiceovers to Canva presentations.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "clipboardRead",
+    "declarativeNetRequest",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://www.canva.com/*",
+    "https://support.readaloud.app/*",
+    "wss://speech.platform.bing.com/*",
+    "https://speech.platform.bing.com/*",
+    "https://translate.google.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.canva.com/design/*"
+      ],
+      "js": [
+        "content/page-scanner.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.canva.com/design/*"
+      ],
+      "css": [
+        "content/floating-widget.css"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/*",
+        "lib/*",
+        "icons/*"
+      ],
+      "matches": [
+        "https://www.canva.com/*"
+      ]
+    }
+  ]
+}

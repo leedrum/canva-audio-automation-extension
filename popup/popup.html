@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canva Voice Injector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="cvi-popup-container">
+    <div class="cvi-popup-header">
+      <div class="cvi-popup-title">
+        <span class="cvi-popup-logo">🎙️</span>
+        <div>
+          <h2>Canva Voice Injector</h2>
+          <span class="cvi-popup-badge">Free Speech Generator</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cvi-popup-content">
+      <div class="cvi-popup-status">
+        <div class="cvi-status-dot"></div>
+        <span>Active on Canva presentations</span>
+      </div>
+
+      <div class="cvi-popup-group">
+        <label for="popup-select-lang">Default Language</label>
+        <select id="popup-select-lang"></select>
+      </div>
+
+      <div class="cvi-popup-group">
+        <label for="popup-select-voice">Default Voice</label>
+        <select id="popup-select-voice"></select>
+      </div>
+
+      <div class="cvi-popup-group">
+        <label for="popup-tts-engine">Speech Engine</label>
+        <select id="popup-tts-engine">
+          <option value="auto">Auto (Neural TTS + Google Fallback - Free)</option>
+          <option value="google">Google Cloud TTS (100% Reliable - Free)</option>
+          <option value="gemini">Google Gemini AI (Requires API Key)</option>
+        </select>
+      </div>
+
+      <div class="cvi-popup-group" id="gemini-key-group" style="display: none;">
+        <label for="popup-gemini-key">Google Gemini API Key</label>
+        <input type="password" id="popup-gemini-key" placeholder="Enter AI Studio API Key...">
+        <span class="cvi-popup-hint">Get a free key from <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a></span>
+      </div>
+
+      <div class="cvi-popup-actions">
+        <button id="popup-btn-save" class="cvi-popup-btn">Save Settings</button>
+      </div>
+
+      <div class="cvi-popup-footer">
+        <a href="https://www.canva.com/design/DAHVb9Vw3lc/ffT46mD-B0WjbLlvI9Gvkg/edit" target="_blank" class="cvi-link-btn">
+          Open Presentation in Canva ↗
+        </a>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
